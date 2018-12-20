@@ -30,10 +30,6 @@ void Show_Time()
     lcd.print(":");
     lcd.print(Sec);
     
-    if (Hour>12)
-    lcd.print(" PM");
-    else 
-    lcd.print(" AM");
     
       
 }
@@ -46,11 +42,6 @@ void Show_Time_Alarm()
     lcd.print(":");
     lcd.print(Sec);
     
-    if (Hour>12)
-    lcd.print(" PM");
-    else 
-    lcd.print(" AM");
-
     lcd.setCursor(0,1);
     lcd.print("Alarm");
     
