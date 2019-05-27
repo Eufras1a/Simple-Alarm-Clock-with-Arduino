@@ -136,7 +136,7 @@ void SetCurrentTime()
     }
 
     // as long as the button is pressed, it will only update time and increment only once
-    while(digitalRead(Increment)==1)
+    while(digitalRead(Increment) == 1)
     {
       Update_Time();
     }
@@ -149,7 +149,7 @@ void SetCurrentTime()
     Update_Time();
   }
    
-  // setting current minute
+  // setting current minute and repeating the above procedure except this time for minute
   lcd.clear();
 
   while(digitalRead(Ok) == 0)
@@ -163,17 +163,18 @@ void SetCurrentTime()
     {
       Min++;
       if (Min > 59)
-      {  lcd.setCursor(0,1);
-         lcd.print("  ");
-          Min = 00;
+      {  
+        lcd.setCursor(0,1);
+        lcd.print("  ");
+        Min = 00;
       }
     }
 
     while(digitalRead(Increment) == 1)
     {
-       Update_Time();
+      Update_Time();
     }
-     Update_Time();
+    Update_Time();
   }
 
   while(digitalRead(Ok) == 1)
@@ -185,61 +186,75 @@ void SetCurrentTime()
   Show_Time();
 }
 
-
+// same as SetCurrentTime excpet this one is for alarm variables.
 void Setting_Alarm()
 {
   lcd.clear();
-  while(digitalRead(Ok)==0)
-   { 
-     lcd.setCursor(0,0);
-     lcd.print("Set Alarm Hour:");
-     lcd.setCursor(0,1);
-     lcd.print(alarmHour);
+
+  while(digitalRead(Ok) == 0)
+  { 
+    lcd.setCursor(0,0);
+    lcd.print("Set Alarm Hour:");
+    lcd.setCursor(0,1);
+    lcd.print(alarmHour);
      
-     if (digitalRead(Increment)==1)
-     {    alarmHour++;
-     if (alarmHour>23)
-         {  lcd.setCursor(0,1);
-            lcd.print("  ");
-            alarmHour=00;
-         }
+    if (digitalRead(Increment) == 1)
+    {    alarmHour++;
+      if (alarmHour > 23)
+      {  
+        lcd.setCursor(0,1);
+        lcd.print("  ");
+        alarmHour = 00;
       }
-     while(digitalRead(Increment)==1)
-     {Update_Time();} 
-     Update_Time();   
-   } 
-  while(digitalRead(Ok)==1)
-  {Update_Time();}
+    }
+
+    while(digitalRead(Increment) == 1)
+    {
+      Update_Time();
+    } 
+    
+    Update_Time();   
+  }
+
+  while(digitalRead(Ok) == 1)
+  {
+    Update_Time();
+  }
   
   lcd.clear();
-  while(digitalRead(Ok)==0)
-   { 
-     
-     lcd.setCursor(0,0);
-     lcd.print("Set Alarm Min:");
-     lcd.setCursor(0,1);
-     lcd.print(alarmMin);
-     
-     if (digitalRead(Increment)==1)
-     {    alarmMin++;
-     if (alarmMin>59)
-        {
-         lcd.setCursor(0,1);
-         lcd.print("  ");
-         alarmMin=00;
-        }
-      }
-     while(digitalRead(Increment)==1)
-     {Update_Time();}
-     Update_Time();    
-   }    
-   while(digitalRead(Ok)==1)
-   {Update_Time();}
 
+  while(digitalRead(Ok) == 0)
+  { 
+    lcd.setCursor(0,0);
+    lcd.print("Set Alarm Min:");
+    lcd.setCursor(0,1);
+    lcd.print(alarmMin);
    
-   lcd.clear();
-   Show_Time();       
-   
+    if (digitalRead(Increment) == 1)
+    { 
+      alarmMin++;
+      if (alarmMin > 59)
+      {
+        lcd.setCursor(0,1);
+        lcd.print("  ");
+        alarmMin = 00;
+      }
+    }
+    
+    while(digitalRead(Increment) == 1)
+    {
+      Update_Time();
+    }
+    Update_Time();    
+  }
+
+  while(digitalRead(Ok) == 1)
+  {
+    Update_Time();
+  }
+
+  lcd.clear();
+  Show_Time();       
 }
 
 
@@ -264,7 +279,7 @@ void Alarm()
     digitalWrite(buzzer,HIGH);
     Update_Time();
   }
-  
+
   lcd.clear();
   Show_Time();
 }
