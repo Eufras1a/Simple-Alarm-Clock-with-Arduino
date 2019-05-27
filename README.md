@@ -1,13 +1,13 @@
 # Simple-Alarm-Clock-with-Arduino
-It's an Alarm Clock Code with 4 buttons, and uses the inferior 24 hour format. 
+It's an Alarm Clock Code with 4 buttons.
 
--uses a 24 hour format 
+-uses the inferior 24 hour format 
 
--resets everytime it's power is disconnected
+-resets everytime it's power is disconnected, so need to set current time again and again >.<
 
 -~~need to add comments ( i swear i will do it before december )~~  
 
-done :) 
+done :)
 
 ~~only 5 months late~~
 
